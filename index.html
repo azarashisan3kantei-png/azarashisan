@@ -1033,13 +1033,6 @@ function submitToGoogleForm(data) {
     form.appendChild(input);
   });
 
-  // Google Forms 側が要求することがある補助フィールド
-  const submitInput = document.createElement('input');
-  submitInput.type = 'hidden';
-  submitInput.name = 'submit';
-  submitInput.value = 'Submit';
-  form.appendChild(submitInput);
-
   document.body.appendChild(form);
   form.submit();
 
@@ -1088,7 +1081,7 @@ function submitForm() {
     btn.innerHTML = '<span class="seal-icon">🍑</span> 送信中...';
   }
 
-  // Apps Scriptへ実際に送信
+  // Googleフォームへ実際に送信
   submitToGoogleForm(data);
 
   // 送信完了画面を表示
@@ -1115,7 +1108,7 @@ function clearForm() {
 }
 
 function launchConfetti() {
-  const emojis = ['🍑'];
+  const emojis = ['🍑', '🌸', '✨', '🦭', '💕'];
   for (let i = 0; i < 30; i++) {
     setTimeout(() => {
       const el = document.createElement('div');
