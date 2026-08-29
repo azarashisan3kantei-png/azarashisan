@@ -471,6 +471,170 @@
     z-index: 100;
   }
 
+
+  /* ─── Contact Page ─── */
+  .contact-view {
+    display: none;
+  }
+
+  .contact-hero {
+    background: linear-gradient(160deg, #FFF5EE 0%, #FCDCC8 50%, #F5C2A5 100%);
+    border-radius: 0 0 40px 40px;
+    padding: 34px 24px 28px;
+    text-align: center;
+    margin: 0 -16px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-hero::before {
+    content: '🍑';
+    position: absolute;
+    top: 14px;
+    right: 22px;
+    font-size: 26px;
+    opacity: 0.28;
+    animation: bob 3s ease-in-out infinite;
+  }
+
+  .contact-hero::after {
+    content: '✨';
+    position: absolute;
+    bottom: 18px;
+    left: 24px;
+    font-size: 18px;
+    opacity: 0.35;
+    animation: bob 3s ease-in-out infinite 1.2s;
+  }
+
+  .contact-image {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #fff;
+    border: 5px solid rgba(255,255,255,0.95);
+    box-shadow: 0 6px 24px rgba(180,130,100,0.18);
+  }
+
+  .contact-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .contact-label {
+    display: inline-block;
+    padding: 4px 13px;
+    margin-bottom: 8px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.7);
+    color: var(--peach-500);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+
+  .contact-hero h1 {
+    font-size: 22px;
+    color: var(--brown-700);
+    margin-bottom: 8px;
+  }
+
+  .contact-hero p {
+    font-size: 13.5px;
+    color: var(--brown-500);
+    line-height: 1.9;
+  }
+
+  .contact-card {
+    background: #fff;
+    border-radius: 22px;
+    padding: 28px 22px;
+    text-align: center;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 14px;
+  }
+
+  .contact-card h2 {
+    font-size: 17px;
+    color: var(--brown-700);
+    margin-bottom: 12px;
+  }
+
+  .contact-card p {
+    font-size: 13.5px;
+    color: var(--brown-500);
+    line-height: 1.9;
+  }
+
+  .contact-guide {
+    margin: 18px 0 22px;
+    padding: 16px;
+    text-align: left;
+    border-radius: 14px;
+    background: var(--peach-50);
+    border: 1px dashed var(--peach-300);
+    font-size: 13px;
+    line-height: 1.9;
+    color: var(--brown-500);
+  }
+
+  .contact-guide strong {
+    color: var(--brown-700);
+  }
+
+  .contact-main-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 340px;
+    padding: 15px 24px;
+    border-radius: 32px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    background: linear-gradient(135deg, var(--peach-300), var(--peach-500));
+    box-shadow: 0 6px 20px rgba(232,152,126,0.35);
+    transition: all 0.25s;
+  }
+
+  .contact-main-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(232,152,126,0.45);
+  }
+
+  .contact-note {
+    margin-top: 12px;
+    font-size: 11px !important;
+    color: var(--brown-300) !important;
+  }
+
+  .contact-back {
+    display: inline-block;
+    margin-top: 16px;
+    border: none;
+    background: none;
+    font-family: inherit;
+    font-size: 13px;
+    color: var(--brown-400);
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .contact-footer {
+    text-align: center;
+    padding: 22px 0 10px;
+    font-size: 11px;
+    color: var(--brown-300);
+  }
+
   /* ─── Mobile ─── */
   @media (max-width: 480px) {
     .hero { padding: 28px 20px 22px; margin: 0 -16px 20px; }
@@ -478,6 +642,10 @@
     .avatar { width: 96px; height: 96px; }
     .card { padding: 18px 18px; }
     .genre-pill { font-size: 13px; padding: 8px 13px; }
+    .contact-hero { padding: 28px 20px 24px; margin: 0 -16px 20px; }
+    .contact-image { width: 126px; height: 126px; }
+    .contact-hero h1 { font-size: 20px; }
+    .contact-card { padding: 24px 18px; }
   }
 </style>
 </head>
@@ -627,7 +795,7 @@
   </p>
 
   <p style="margin-top:6px;">
-    <a href="inquiry.html">
+    <a href="#" onclick="showContact(); return false;">
       🦭 お問い合わせはこちら
     </a>
   </p>
@@ -662,14 +830,91 @@
   </p>
 
   <p style="margin-top:6px;">
-    <a href="https://azarashisan-kanntei.stores.jp/inquiry" target="_blank">
+    <a href="#" onclick="showContact(); return false;">
       🦭 お問い合わせはこちら
     </a>
   </p>
 </div>
 </div>
 
+
+<!-- Contact View -->
+<div class="container contact-view" id="contactView">
+
+  <div class="contact-hero">
+    <div class="contact-image">
+      <img src="data:image/webp;base64,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" alt="桃を頭にのせた白いあざらし">
+    </div>
+    <div class="contact-label">CONTACT 🍑</div>
+    <h1>お問い合わせ</h1>
+    <p>
+      鑑定について気になることや<br>
+      ご不明点がありましたら、<br>
+      お気軽にお問い合わせくださいね🦭
+    </p>
+  </div>
+
+  <div class="contact-card">
+    <h2>お問い合わせはこちらから🍑</h2>
+    <p>
+      下のボタンを押すと、<br>
+      STORESのお問い合わせフォームが開きます。
+    </p>
+
+    <div class="contact-guide">
+      <strong>こんなときにご利用ください</strong><br>
+      ・鑑定内容について確認したいことがある<br>
+      ・お申込みやお支払いについて聞きたい<br>
+      ・その他、ご不明なことがある
+    </div>
+
+    <a
+      class="contact-main-btn"
+      href="https://azarashisan-kanntei.stores.jp/inquiry"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      🍑 お問い合わせフォームへ
+    </a>
+
+    <p class="contact-note">※ STORESのページへ移動します</p>
+
+    <button class="contact-back" onclick="hideContact()">
+      ← ミニ鑑定フォームへ戻る
+    </button>
+  </div>
+
+  <div class="contact-footer">
+    © あざらしさんの鑑定部屋
+  </div>
+</div>
+
 <script>
+
+function showContact() {
+  const formView = document.getElementById('formView');
+  const successView = document.getElementById('successView');
+  const contactView = document.getElementById('contactView');
+
+  if (formView) formView.style.display = 'none';
+  if (successView) successView.style.display = 'none';
+  if (contactView) contactView.style.display = 'block';
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function hideContact() {
+  const formView = document.getElementById('formView');
+  const successView = document.getElementById('successView');
+  const contactView = document.getElementById('contactView');
+
+  if (contactView) contactView.style.display = 'none';
+  if (successView) successView.style.display = 'none';
+  if (formView) formView.style.display = 'block';
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 function pickRadio(el) {
   const group = el.closest('.radio-group');
   group.querySelectorAll('.radio-item').forEach(i => i.classList.remove('active'));
